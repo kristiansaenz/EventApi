@@ -1,15 +1,18 @@
 package com.kristiansaenz.events.models;
 
 import org.springframework.data.annotation.Id;
-
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
+@Document(collection = "Events")
 public class Event {
     @Id
     private String id;
     private String name;
     private Date date;
     private String address;
+
+    public Event() {}
 
     public Event(String id, String name, Date date, String address) {
         this.id = id;
