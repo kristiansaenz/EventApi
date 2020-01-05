@@ -2,10 +2,7 @@ package com.kristiansaenz.events;
 
 import com.kristiansaenz.events.models.Event;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -25,8 +22,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getEventById() {
-        return "Get event by id";
+    public Event getEventById(@PathVariable("id") String id) {
+        return eventRepository.findEventById(id);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

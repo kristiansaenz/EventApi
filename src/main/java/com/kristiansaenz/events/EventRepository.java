@@ -10,7 +10,7 @@ public interface EventRepository extends MongoRepository<Event, String>{
 
     List<Event> findAll();
 
-//    Event findById(String id);
+    Event findEventById(String id);
 
     Event save(Event event);
 
