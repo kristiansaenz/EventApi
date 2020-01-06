@@ -10,4 +10,4 @@
 
 # Run
 
-3. Go into cloned project directory and in terminal run "mvn spring-boot:run"
+3. Go into cloned project directory and in terminal run "mvn clean test spring-boot:run"
