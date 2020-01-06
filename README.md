@@ -28,7 +28,6 @@ Endpoints:
 		"address": "0362 Rivendell Rd"\
     }
     
-    <br/>
     You don't need to send id. The api will generate a uuid for the event you create.
     <br/>
   - To find event by id: http://localhost:8080/events/{id} <br/>
