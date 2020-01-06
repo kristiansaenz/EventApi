@@ -10,12 +10,17 @@
 
 # Run
 
-3. Go into cloned project directory and in terminal run "mvn clean test spring-boot:run"
+Go into cloned project directory and in terminal run "mvn clean test spring-boot:run"
 
+OR
+
+You can install my docker image and run in terminal with command "docker run -p 5000:8080 ksaenz7/ksaenz7/spring-boot-events-api-demo:0.0.1-SNAPSHOT"
 
 # Test
 
 Use curl, postman, insomnia .. etc to test endpoints!
+
+* NOTE: If running docker image, use http://localhost:5000 *
 
 Endpoints: 
 
