@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.runner.RunWith;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.BDDMockito.given;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -29,6 +31,10 @@ class EventControllerTest {
     public void getAllEvents() throws Exception {
         List<Event> eventList = new ArrayList<Event>();
 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date1 = formatter.parse("25/01/2020 13:30:00");
+        Date date2 = formatter.parse("25/02/2020 10:30:00");
+
         Event event1 = new Event("1", "Hiking Retreat", null, "1234 Hood Drive");
         eventList.add(event1);
 
@@ -45,6 +51,11 @@ class EventControllerTest {
 
     @Test
     public void getEventById() throws Exception{
+
+        String dateAsString = "25/01/2020 01:30:00";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = formatter.parse(dateAsString);
+
         Event event = new Event("1", "Hiking Retreat", null, "1234 Hood Drive");
 
         given(eventRepository.findEventById(event.getId())).willReturn(Optional.of(event));
@@ -56,7 +67,12 @@ class EventControllerTest {
 
     @Test
     public void createEvent() throws Exception {
-        Event event = new Event("1", "Sledding Class", null, "1234 Hood Drive");
+
+        String dateAsString = "15/01/2020 06:00:00";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = formatter.parse(dateAsString);
+
+        Event event = new Event("1", "Sledding Class", date, "1234 Hood Drive");
 
         given(eventRepository.save(event)).willReturn(event);
 
@@ -66,6 +82,8 @@ class EventControllerTest {
         this.mockMvc.perform(post("/events/create").content(jsonObject).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andReturn();
+
+
     }
 
 }

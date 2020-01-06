@@ -11,6 +11,7 @@
 	<groupId>com.kristiansaenz</groupId>
 	<artifactId>events</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>events</name>
 	<description>Event Api</description>
 
