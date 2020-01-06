@@ -1,15 +1,21 @@
 package com.kristiansaenz.events.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Document(collection = "Events")
 public class Event {
+
     @Id
     private String id;
+
     private String name;
+
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
     private Date date;
+
     private String address;
 
     public Event() {}
